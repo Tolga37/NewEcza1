@@ -14,16 +14,19 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setSessionToken(state, action: PayloadAction<string>) {
+    setSessionToken: (state, action: PayloadAction<string>) => {
       state.sessionToken = action.payload;
     },
-    clearUser(state) {
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
+    },
+    clearUser: (state) => {
       state.sessionToken = null;
       state.email = null;
     },
   },
 });
 
-export const { setSessionToken, clearUser } = userSlice.actions;
+export const { setSessionToken, setEmail, clearUser } = userSlice.actions;
 
 export default userSlice.reducer;
