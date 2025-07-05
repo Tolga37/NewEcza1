@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { SearchInput } from '../..';
+import { FilterIcon } from '../../icons';
 
 interface TabContentHeaderProps {
   searchValue: string;
@@ -39,7 +40,7 @@ const TabContentHeader: React.FC<TabContentHeaderProps> = ({
         onPress={onFilterPress}
         activeOpacity={0.7}
       >
-        <Text style={styles.filterIcon}>⚙️</Text>
+        <FilterIcon size={18} color="#666" />
       </TouchableOpacity>
     </View>
   );
@@ -71,9 +72,6 @@ const styles = StyleSheet.create({
     borderColor: '#e9ecef',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  filterIcon: {
-    fontSize: 18,
   },
 });
 

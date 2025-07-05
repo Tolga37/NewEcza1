@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { Header, SearchInput, CategoryStories, ImageSlider, ProductList } from '../components';
+import { Header, SearchInput, CategoryStories, ImageSlider, ProductList, MenuIcon, NotificationIcon } from '../components';
 import { appLogo } from '../assets/images';
 
 const HomeScreen = () => {
@@ -184,8 +184,8 @@ const HomeScreen = () => {
       <Header
         showLogo={true}
         logoSource={appLogo}
-        leftElement={<Text style={styles.menuIcon}>☰</Text>}
-        rightElement={<Text style={styles.notificationIcon}>🔔</Text>}
+        leftElement={<MenuIcon size={20} color="#333" />}
+        rightElement={<NotificationIcon size={20} color="#333" />}
         onLeftPress={handleMenuPress}
         onRightPress={handleNotificationPress}
       />

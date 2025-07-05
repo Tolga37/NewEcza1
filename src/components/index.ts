@@ -10,4 +10,7 @@ export { default as CartVendorCard } from './common/CartVendorCard';
 export { default as CartItem } from './common/CartItem';
 export { default as QuantitySelector } from './common/QuantitySelector';
 export { default as ShippingOptions } from './common/ShippingOptions';
-export { default as ProfileMenuCard } from './common/ProfileMenuCard'; 
+export { default as ProfileMenuCard } from './common/ProfileMenuCard';
+
+// Icons
+export * from './icons'; 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { ShippingOptions } from '../..';
+import { CheckIcon, DeleteIcon } from '../../icons';
 
 interface ShippingOption {
   id: string;
@@ -44,7 +45,7 @@ const CartVendorCard: React.FC<CartVendorCardProps> = ({
         activeOpacity={0.7}
       >
         <View style={[styles.checkbox, isSelected && styles.checkboxSelected]}>
-          {isSelected && <Text style={styles.checkmark}>✓</Text>}
+          {isSelected && <CheckIcon size={16} color="#fff" />}
         </View>
         <Text style={styles.vendorName}>{vendorName}</Text>
         <TouchableOpacity 
@@ -52,7 +53,7 @@ const CartVendorCard: React.FC<CartVendorCardProps> = ({
           onPress={onDelete}
           activeOpacity={0.7}
         >
-          <Text style={styles.deleteIcon}>🗑️</Text>
+          <DeleteIcon size={18} color="#666" />
         </TouchableOpacity>
       </TouchableOpacity>
 
@@ -112,11 +113,6 @@ const styles = StyleSheet.create({
     borderColor: '#007AFF',
     backgroundColor: '#007AFF',
   },
-  checkmark: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
   vendorName: {
     fontSize: 16,
     fontWeight: '600',
@@ -135,10 +131,6 @@ const styles = StyleSheet.create({
     minWidth: 32,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  deleteIcon: {
-    fontSize: 14,
-    color: '#666',
   },
   totalContainer: {
     flexDirection: 'row',

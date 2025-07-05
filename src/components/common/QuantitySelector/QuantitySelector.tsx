@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { PlusIcon, MinusIcon } from '../../icons';
 
 interface QuantitySelectorProps {
   quantity: number;
@@ -41,12 +42,10 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
         disabled={!canDecrease}
         activeOpacity={0.7}
       >
-        <Text style={[
-          styles.buttonText,
-          !canDecrease && styles.buttonTextDisabled,
-        ]}>
-          −
-        </Text>
+        <MinusIcon 
+          size={16} 
+          color={!canDecrease ? '#999' : '#333'} 
+        />
       </TouchableOpacity>
 
       {/* Quantity Display */}
@@ -68,12 +67,10 @@ const QuantitySelector: React.FC<QuantitySelectorProps> = ({
         disabled={!canIncrease}
         activeOpacity={0.7}
       >
-        <Text style={[
-          styles.buttonText,
-          !canIncrease && styles.buttonTextDisabled,
-        ]}>
-          +
-        </Text>
+        <PlusIcon 
+          size={16} 
+          color={!canIncrease ? '#999' : '#333'} 
+        />
       </TouchableOpacity>
     </View>
   );
@@ -111,14 +108,6 @@ const styles = StyleSheet.create({
   },
   buttonDisabled: {
     backgroundColor: '#f0f0f0',
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  buttonTextDisabled: {
-    color: '#999',
   },
   quantityContainer: {
     flex: 1,

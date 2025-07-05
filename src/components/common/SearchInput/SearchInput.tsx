@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { SearchIcon, CloseIcon } from '../../icons';
 
 interface SearchInputProps {
   placeholder?: string;
@@ -66,7 +67,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       {/* Sol taraf - Arama ikonu */}
       {showSearchIcon && (
         <TouchableOpacity onPress={handleSearch} style={styles.iconButton}>
-          <Text style={styles.searchIcon}>🔍</Text>
+          <SearchIcon size={16} color="#6c757d" />
         </TouchableOpacity>
       )}
 
@@ -89,7 +90,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       {/* Sağ taraf - Temizle ikonu */}
       {showClearIcon && (value !== undefined ? value : internalValue).length > 0 && (
         <TouchableOpacity onPress={handleClear} style={styles.iconButton}>
-          <Text style={styles.clearIcon}>✕</Text>
+          <CloseIcon size={14} color="#6c757d" />
         </TouchableOpacity>
       )}
     </View>
@@ -127,15 +128,6 @@ const styles = StyleSheet.create({
     minHeight: 32,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  searchIcon: {
-    fontSize: 16,
-    color: '#6c757d',
-  },
-  clearIcon: {
-    fontSize: 14,
-    color: '#6c757d',
-    fontWeight: 'bold',
   },
 });
 

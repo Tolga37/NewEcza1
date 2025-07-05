@@ -1,5 +1,22 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { 
+  UserIcon, 
+  SettingsIcon, 
+  LocationIcon, 
+  DocumentIcon, 
+  PhoneIcon, 
+  BankIcon, 
+  PackageIcon, 
+  MoneyIcon, 
+  HeartIcon, 
+  MailIcon, 
+  ClockIcon, 
+  BlockIcon, 
+  HeadsetIcon, 
+  CallIcon,
+  ArrowRightIcon 
+} from '../../icons';
 
 interface ProfileMenuCardProps {
   title: string;
@@ -14,6 +31,44 @@ const ProfileMenuCard: React.FC<ProfileMenuCardProps> = ({
   onPress,
   containerStyle,
 }) => {
+  // Icon name'ini SVG komponente çevir
+  const getIconComponent = (iconName?: string) => {
+    const iconProps = { size: 20, color: '#666' };
+    
+    switch (iconName) {
+      case 'UserIcon':
+        return <UserIcon {...iconProps} />;
+      case 'SettingsIcon':
+        return <SettingsIcon {...iconProps} />;
+      case 'LocationIcon':
+        return <LocationIcon {...iconProps} />;
+      case 'DocumentIcon':
+        return <DocumentIcon {...iconProps} />;
+      case 'PhoneIcon':
+        return <PhoneIcon {...iconProps} />;
+      case 'BankIcon':
+        return <BankIcon {...iconProps} />;
+      case 'PackageIcon':
+        return <PackageIcon {...iconProps} />;
+      case 'MoneyIcon':
+        return <MoneyIcon {...iconProps} />;
+      case 'HeartIcon':
+        return <HeartIcon {...iconProps} />;
+      case 'MailIcon':
+        return <MailIcon {...iconProps} />;
+      case 'ClockIcon':
+        return <ClockIcon {...iconProps} />;
+      case 'BlockIcon':
+        return <BlockIcon {...iconProps} />;
+      case 'HeadsetIcon':
+        return <HeadsetIcon {...iconProps} />;
+      case 'CallIcon':
+        return <CallIcon {...iconProps} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <TouchableOpacity
       style={[styles.container, containerStyle]}
@@ -21,9 +76,11 @@ const ProfileMenuCard: React.FC<ProfileMenuCardProps> = ({
       activeOpacity={0.7}
     >
       <View style={styles.content}>
-        {icon && <Text style={styles.icon}>{icon}</Text>}
+        <View style={styles.iconContainer}>
+          {getIconComponent(icon)}
+        </View>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.arrow}>›</Text>
+        <ArrowRightIcon size={20} color="#ccc" />
       </View>
     </TouchableOpacity>
   );
@@ -47,22 +104,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
   },
-  icon: {
-    fontSize: 20,
+  iconContainer: {
     marginRight: 12,
-    width: 24,
-    textAlign: 'center',
   },
   title: {
     flex: 1,
     fontSize: 16,
     fontWeight: '500',
     color: '#333',
-  },
-  arrow: {
-    fontSize: 20,
-    color: '#ccc',
-    fontWeight: '300',
   },
 });
 

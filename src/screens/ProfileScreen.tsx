@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Header, ProfileMenuCard } from '../components';
+import { SettingsIcon, UnlockIcon } from '../components/icons';
 import { RootStackParamList } from '../navigation/RootNavigator';
 
 type ProfileScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -82,20 +83,20 @@ const ProfileScreen = () => {
   };
 
   const menuItems = [
-    { title: 'Profilim', icon: '👤' },
-    { title: 'Hesabım', icon: '⚙️' },
-    { title: 'Teslimat Adreslerim', icon: '📍' },
-    { title: 'Fatura Adreslerim', icon: '📄' },
-    { title: 'SMS Ayarlarım', icon: '📱' },
-    { title: 'Banka Hesap Bilgilerim', icon: '🏦' },
-    { title: 'Satış ve Kargo Bilgilerim', icon: '📦' },
-    { title: 'Hesap Hareketleri', icon: '💰' },
-    { title: 'Favorilerim', icon: '❤️' },
-    { title: 'Mesajlarım', icon: '✉️' },
-    { title: 'İşlem Yapılması Gereken Siparişler', icon: '⏰' },
-    { title: 'Kara Listedekiler', icon: '🚫' },
-    { title: 'Müşteri Hizmetleri', icon: '🎧' },
-    { title: 'Çağrı Merkezi', icon: '📞' },
+    { title: 'Profilim', icon: 'UserIcon' },
+    { title: 'Hesabım', icon: 'SettingsIcon' },
+    { title: 'Teslimat Adreslerim', icon: 'LocationIcon' },
+    { title: 'Fatura Adreslerim', icon: 'DocumentIcon' },
+    { title: 'SMS Ayarlarım', icon: 'PhoneIcon' },
+    { title: 'Banka Hesap Bilgilerim', icon: 'BankIcon' },
+    { title: 'Satış ve Kargo Bilgilerim', icon: 'PackageIcon' },
+    { title: 'Hesap Hareketleri', icon: 'MoneyIcon' },
+    { title: 'Favorilerim', icon: 'HeartIcon' },
+    { title: 'Mesajlarım', icon: 'MailIcon' },
+    { title: 'İşlem Yapılması Gereken Siparişler', icon: 'ClockIcon' },
+    { title: 'Kara Listedekiler', icon: 'BlockIcon' },
+    { title: 'Müşteri Hizmetleri', icon: 'HeadsetIcon' },
+    { title: 'Çağrı Merkezi', icon: 'CallIcon' },
   ];
 
   return (
@@ -103,7 +104,7 @@ const ProfileScreen = () => {
       <Header
         title="Profil"
         showLogo={false}
-        rightElement={<Text style={styles.settingsIcon}>⚙️</Text>}
+        rightElement={<SettingsIcon size={20} color="#333" />}
         onRightPress={handleSettingsPress}
         backgroundColor="#f8f9fa"
       />
@@ -122,7 +123,7 @@ const ProfileScreen = () => {
         
         {/* Güvenli Çıkış Butonu */}
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <Text style={styles.logoutIcon}>🔓</Text>
+          <UnlockIcon size={20} color="#ff4757" />
           <Text style={styles.logoutText}>Güvenli Çıkış</Text>
         </TouchableOpacity>
         
@@ -144,9 +145,6 @@ const styles = StyleSheet.create({
   menuContainer: {
     paddingTop: 16,
   },
-  settingsIcon: {
-    fontSize: 20,
-  },
   logoutButton: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -162,17 +160,12 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 2,
   },
-  logoutIcon: {
-    fontSize: 20,
-    marginRight: 12,
-    width: 24,
-    textAlign: 'center',
-  },
   logoutText: {
     flex: 1,
     fontSize: 16,
     fontWeight: '500',
     color: '#ff4757',
+    marginLeft: 12,
   },
   bottomSpace: {
     height: 20,

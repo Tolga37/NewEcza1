@@ -8,8 +8,30 @@ import {
   Pressable,
 } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { HomeIcon, OrdersIcon, CartIcon, AdsIcon, ProfileIcon } from '../components/icons';
 
 const CustomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
+  // Route name'e göre ikon mapping'i
+  const getTabIcon = (routeName: string, isFocused: boolean) => {
+    const color = isFocused ? '#e30613' : '#666';
+    const size = 24;
+
+    switch (routeName) {
+      case 'Home':
+        return <HomeIcon size={size} color={color} />;
+      case 'Orders':
+        return <OrdersIcon size={size} color={color} />;
+      case 'Cart':
+        return <CartIcon size={32} color={color} />; // Sepet de aktif/pasif renk alır
+      case 'Listings':
+        return <AdsIcon size={size} color={color} />;
+      case 'Profile':
+        return <ProfileIcon size={size} color={color} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <View style={styles.wrapper}>
       {/* Üst kırmızı çizgi */}
@@ -19,7 +41,7 @@ const CustomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => 
       <View style={styles.container}>
         {state.routes.map((route, index) => {
           const isFocused = state.index === index;
-          const isMiddle = index === 2;
+          const isMiddle = index === 2; // Cart tab (ortadaki)
 
           const onPress = () => {
             const event = navigation.emit({
@@ -40,7 +62,7 @@ const CustomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => 
                 onPress={onPress}
                 style={styles.middleTabButton}
               >
-                <Text style={styles.middleText}>?</Text>
+                {getTabIcon(route.name, isFocused)}
               </Pressable>
             );
           }
@@ -52,7 +74,9 @@ const CustomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => 
               style={styles.tabButton}
               activeOpacity={0.7}
             >
-              <Text style={styles.tabText}>?</Text>
+              <View style={styles.tabContent}>
+                {getTabIcon(route.name, isFocused)}
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -71,19 +95,21 @@ const styles = StyleSheet.create({
   },
   container: {
     flexDirection: 'row',
-    height: 65,
+    height: 80,
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingBottom: Platform.OS === 'ios' ? 20 : 0,
+    paddingBottom: Platform.OS === 'ios' ? 30 : 10,
+    paddingTop: 10,
   },
   tabButton: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  tabText: {
-    fontSize: 20,
-    color: '#000',
+  tabContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   middleTabButton: {
     position: 'relative',
@@ -97,10 +123,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#e30613', // kırmızı çerçeve
     zIndex: 10,
-  },
-  middleText: {
-    fontSize: 24,
-    color: '#000',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { QuantitySelector } from '../..';
+import { CheckIcon, DeleteIcon, PackageIcon } from '../../icons';
 
 interface CartItemProps {
   productName: string;
@@ -50,7 +51,7 @@ const CartItem: React.FC<CartItemProps> = ({
         activeOpacity={0.7}
       >
         <View style={[styles.checkbox, isSelected && styles.checkboxSelected]}>
-          {isSelected && <Text style={styles.checkmark}>✓</Text>}
+          {isSelected && <CheckIcon size={16} color="#fff" />}
         </View>
       </TouchableOpacity>
 
@@ -64,7 +65,7 @@ const CartItem: React.FC<CartItemProps> = ({
           />
         ) : (
           <View style={styles.placeholderImage}>
-            <Text style={styles.placeholderText}>📦</Text>
+            <PackageIcon size={32} color="#999" />
           </View>
         )}
       </View>
@@ -117,7 +118,7 @@ const CartItem: React.FC<CartItemProps> = ({
         onPress={onDelete}
         activeOpacity={0.7}
       >
-        <Text style={styles.deleteIcon}>🗑️</Text>
+        <DeleteIcon size={18} color="#dc3545" />
       </TouchableOpacity>
     </View>
   );
@@ -149,9 +150,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#e9ecef',
-  },
-  placeholderText: {
-    fontSize: 24,
   },
   productInfo: {
     flex: 1,
@@ -216,11 +214,6 @@ const styles = StyleSheet.create({
   checkboxSelected: {
     backgroundColor: '#28a745',
   },
-  checkmark: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
   productInfoDisabled: {
     opacity: 0.5,
   },
@@ -230,11 +223,6 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  deleteIcon: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#dc3545',
   },
   quantityContainer: {
     marginTop: 4,
