@@ -31,7 +31,7 @@ const LoginScreen = () => {
       if (response?.IsSuccess && response?.Data) {
        // dispatch(setSessionToken(response.ReturnValue.Token));
        // dispatch(setEmail(response.ReturnValue.Email));
-        navigation.replace('Home');
+        navigation.replace('Main');
       } else {
         Alert.alert('Giriş Başarısız', 'Kullanıcı adı veya şifre hatalı.');
       }
